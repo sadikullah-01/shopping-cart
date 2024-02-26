@@ -1,26 +1,23 @@
 // to add or remove I-phone's in a cart
 // to remove  product in cart
 
-document.getElementById('minus_product').addEventListener('click', function () {
-     let productNum = document.getElementById('productCount')
-     const ProductQuantity = parseInt(productNum.value)
-     const subtractProductQuantity = ProductQuantity - 1
-     productNum.value = subtractProductQuantity
-     let productAmount = document.getElementById('productAmount')
-     let totalProductAmount = subtractProductQuantity * 1219
-     productAmount.innerText = '$' + totalProductAmount
-})
+// document.getElementById('minus_product').addEventListener('click', function () {
+//     handleProductChange(false)
+// })
 
-document.getElementById('add_product').addEventListener('click', function () {
-    handleProductChange()
-})
-function handleProductChange() {
+//     handleProductChange(true)
+// })
+function handleProductChange(isIncrease) {
     let productNum = document.getElementById('productCount')
     const ProductQuantity = parseInt(productNum.value)
-    const addProductQuantity = ProductQuantity + 1
-    productNum.value = addProductQuantity
+    let changeProductQuantity = ProductQuantity
+    if (isIncrease == false) {
+        changeProductQuantity = ProductQuantity - 1}
+    if (isIncrease == true) {
+        changeProductQuantity = ProductQuantity + 1}
+    productNum.value = changeProductQuantity
     let productAmount = document.getElementById('productAmount')
-    let totalProductAmount = addProductQuantity * 1219
+    let totalProductAmount = changeProductQuantity * 1219
     productAmount.innerText = '$' + totalProductAmount
 }
 // document.getElementById('removePhoneCart').addEventListener('click', function () {
