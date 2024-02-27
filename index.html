@@ -45,9 +45,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="remove_case" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleCaseChange(false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
                            <input id="case_count" type="text" class="form-control text-center" value="1">
-                           <button id="add_case" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleCaseChange(true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
 
                         </div>
                         <h5 id="caseAmount">$59</h5>
