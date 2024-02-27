@@ -1,25 +1,41 @@
 // to add or remove I-phone's in a cart
-// to remove  product in cart
 
-// document.getElementById('minus_product').addEventListener('click', function () {
-//     handleProductChange(false)
-// })
-
-//     handleProductChange(true)
-// })
-function handleProductChange(isIncrease) {
+function handlePhoneChange(isIncrease) {
     let productNum = document.getElementById('productCount')
     const ProductQuantity = parseInt(productNum.value)
-    let changeProductQuantity = ProductQuantity
-    if (isIncrease == false) {
-        changeProductQuantity = ProductQuantity - 1}
+    let changePhoneQuantity = ProductQuantity
+    if (isIncrease == false && ProductQuantity > 1) {
+        changePhoneQuantity = ProductQuantity - 1
+    }
     if (isIncrease == true) {
-        changeProductQuantity = ProductQuantity + 1}
-    productNum.value = changeProductQuantity
+        changePhoneQuantity = ProductQuantity + 1
+    }
+    productNum.value = changePhoneQuantity
     let productAmount = document.getElementById('productAmount')
-    let totalProductAmount = changeProductQuantity * 1219
-    productAmount.innerText = '$' + totalProductAmount
-}
+    let totalProductAmount = changePhoneQuantity * 1219
+    productAmount.innerText = '$' + totalProductAmount}
+// to add or remove phone case in cart
+document.getElementById('add_case').addEventListener('click', function () {
+    let caseNum = document.getElementById('case_count')
+    let changeCaseCount = parseInt(caseNum.value)
+    let addCaseQuantity = changeCaseCount + 1
+    caseNum.value = addCaseQuantity
+    // add case amount
+    let caseAmount = document.getElementById('caseAmount')
+    const newCaseAmount = addCaseQuantity * 59
+    caseAmount.innerText = '$' + newCaseAmount})
+// to subtract phone case quantity in the cart
+document.getElementById('remove_case').addEventListener('click', function () {
+    let caseNum = document.getElementById('case_count')
+    let changeCaseCount = parseInt(caseNum.value)
+    let addCaseQuantity = changeCaseCount - 1
+    caseNum.value = addCaseQuantity
+    // to subtract phone case amount in the cart
+    let caseQuantity = document.getElementById('caseAmount')
+    const newCaseAmount = addCaseQuantity * 59
+    caseQuantity.innerText = '$' + newCaseAmount})
+
+
 // document.getElementById('removePhoneCart').addEventListener('click', function () {
 //     let totalCart = document.getElementById('cartphone')
 //     totalCart.style.display = 'none'
