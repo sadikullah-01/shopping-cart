@@ -1,23 +1,43 @@
 // to add or remove I-phone's in a cart
 
 function handleProductChange(product, ifIncrease) {
-    let productNum = document.getElementById(product + '_count')
-    const ProductQuantity = parseInt(productNum.value)
-    let changeProductQuantity = ProductQuantity
-    if (ifIncrease == false && ProductQuantity > 1) {
-        changeProductQuantity = ProductQuantity - 1}
-    if (ifIncrease == true) {
-        changeProductQuantity = ProductQuantity + 1}
-    productNum.value = changeProductQuantity
-    
-    let totalProductAmount = 0
-    if (product == 'phone') {
-        totalProductAmount = changeProductQuantity * 1219}
-    if (product == 'case') {
-        totalProductAmount = changeProductQuantity * 59}
-    document.getElementById(product + '_amount').innerText = '$' + totalProductAmount
+  const ProductQuantity = getProductInput(product);
+  let changeProductQuantity = ProductQuantity;
+  if (ifIncrease == false && ProductQuantity > 1) {
+    changeProductQuantity = ProductQuantity - 1;
+  }
+  if (ifIncrease == true) {
+    changeProductQuantity = ProductQuantity + 1;
+  }
+  document.getElementById(product + "_count").value = changeProductQuantity;
+  let totalProductAmount = 0;
+  if (product == "phone") {
+    totalProductAmount = changeProductQuantity * 1219;
+  }
+  if (product == "case") {
+    totalProductAmount = changeProductQuantity * 59;
+  }
+  document.getElementById(product + "_amount").innerText =
+    "$" + totalProductAmount;
+  calculateTotal();
 }
 
+function calculateTotal() {
+  const phoneCount = getProductInput("phone");
+  const caseCount = getProductInput("case");
+  const totalPrice = phoneCount * 1219 + caseCount * 59;
+  document.getElementById("total_price").innerText = "$" + totalPrice;
+  const tax = Math.round(totalPrice * 0.1);
+  document.getElementById("tax").innerText = '$' + tax;
+  const grandPrice = totalPrice + tax;
+  document.getElementById("grand_price").innerText = '$' + grandPrice;
+}
+
+function getProductInput(product) {
+  const productInput = document.getElementById(product + "_count");
+  const productCount = parseInt(productInput.value);
+  return productCount;
+}
 // function handleProductChange(product, isIncrease) {
 //     let productNum = document.getElementById('productCount')
 //     const ProductQuantity = parseInt(productNum.value)
@@ -71,7 +91,6 @@ function handleProductChange(product, ifIncrease) {
 //     let caseQuantity = document.getElementById('caseAmount')
 //     const newCaseAmount = addCaseQuantity * 59
 //     caseQuantity.innerText = '$' + newCaseAmount})
-
 
 // document.getElementById('removePhoneCart').addEventListener('click', function () {
 //     let totalCart = document.getElementById('cartphone')
